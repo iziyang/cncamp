@@ -30,8 +30,8 @@ func main() {
 			}
 		}
 
-		version := os.Getenv("GOPATH")
-		w.Header().Set("GOPATH", version)
+		version := os.Getenv("VERSION")
+		w.Header().Set("Version", version)
 
 		log.Printf("Client IP: %s, HTTP Status Code: %d\n", r.RemoteAddr, http.StatusOK)
 		fmt.Fprintf(w, "Hello, World!")

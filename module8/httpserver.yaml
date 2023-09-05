@@ -23,7 +23,7 @@ spec:
             - name: LOG_LEVEL
               valueFrom:
                 configMapKeyRef:
-                  name: log-config
+                  name: httpserver-config
                   key: LOG_LEVEL
           resources:
             limits:

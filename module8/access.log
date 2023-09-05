@@ -1,0 +1,12 @@
+time="2023-09-05T15:17:34+08:00" level=error msg="Server closed unexpectedly" error="listen tcp :8080: bind: address already in use"
+time="2023-09-05T15:19:00+08:00" level=debug msg="Debug level logging started"
+time="2023-09-05T15:19:12+08:00" level=debug msg="Header name value is:User-Agentcurl/7.88.1"
+time="2023-09-05T15:19:12+08:00" level=debug msg="Header name value is:Accept*/*"
+time="2023-09-05T15:19:12+08:00" level=debug msg="Header name value is:Test-Headertest-header"
+time="2023-09-05T15:19:12+08:00" level=info msg="Request header has been writed in response."
+time="2023-09-05T15:19:12+08:00" level=info msg="Request processed" ClientIP="127.0.0.1:52689" HTTPStatusCode=200
+time="2023-09-05T15:59:47+08:00" level=debug msg="Header name value is:User-Agentcurl/7.88.1"
+time="2023-09-05T15:59:47+08:00" level=debug msg="Header name value is:Accept*/*"
+time="2023-09-05T15:59:47+08:00" level=debug msg="Header name value is:Test-Headertest-header"
+time="2023-09-05T15:59:47+08:00" level=info msg="Request header has been writed in response."
+time="2023-09-05T15:59:47+08:00" level=info msg="Request processed" ClientIP="127.0.0.1:54746" HTTPStatusCode=200

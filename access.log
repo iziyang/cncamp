@@ -1,0 +1,12 @@
+time="2023-09-05T12:00:36+08:00" level=info msg="Health check passed"
+time="2023-09-05T12:00:41+08:00" level=info msg="Health check passed"
+time="2023-09-05T12:01:09+08:00" level=info msg="Request header has been writed in response."
+time="2023-09-05T12:01:09+08:00" level=info msg="Request header has been writed in response."
+time="2023-09-05T12:01:09+08:00" level=info msg="Request header has been writed in response."
+time="2023-09-05T12:01:09+08:00" level=info msg="Request processed" ClientIP="127.0.0.1:64818" HTTPStatusCode=200
+time="2023-09-05T12:02:53+08:00" level=info msg="Request header has been writed in response."
+time="2023-09-05T12:02:53+08:00" level=info msg="Request header has been writed in response."
+time="2023-09-05T12:02:53+08:00" level=info msg="Request header has been writed in response."
+time="2023-09-05T12:02:53+08:00" level=info msg="Request processed" ClientIP="127.0.0.1:64899" HTTPStatusCode=200
+time="2023-09-05T12:05:49+08:00" level=info msg="Request header has been writed in response."
+time="2023-09-05T12:05:49+08:00" level=info msg="Request processed" ClientIP="127.0.0.1:65086" HTTPStatusCode=200

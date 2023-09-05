@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: httpserver_k8s-deployment
+  name: httpserver-k8s-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: httpserver_k8s
+      app: httpserver-k8s
   template:
     metadata:
       labels:
-        app: httpserver_k8s
+        app: httpserver-k8s
     spec:
       containers:
-        - name: httpserver_k8s
+        - name: httpserver-k8s
           image: isziyang/httpserver:v3.0
           ports:
             - containerPort: 8080

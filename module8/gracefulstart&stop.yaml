@@ -1,37 +1,43 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: httpserver-deployment
+  name: httpserver_k8s-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: httpserver
+      app: httpserver_k8s
   template:
     metadata:
       labels:
-        app: httpserver
+        app: httpserver_k8s
     spec:
-      initContainers:
-        - name: init-tini
-          image: krallin/tini
-          command: ["sleep", "infinity"]
-          resources:
-            requests:
-              cpu: 10m
-              memory: 10Mi
       containers:
-        - name: httpserver
-          image: isziyang/httpserver:v2.0
+        - name: httpserver_k8s
+          image: isziyang/httpserver:v3.0
           ports:
             - containerPort: 8080
+          env:
+            - name: VERSION
+              value: "1.0"
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: log-config
+                  key: LOG_LEVEL
           resources:
-            requests:
-              cpu: 100m
-              memory: 128Mi
             limits:
-              cpu: 200m
-              memory: 256Mi
+              cpu: "1"
+              memory: "512Mi"
+            requests:
+              cpu: "500m"
+              memory: "256Mi"
+          livenessProbe:
+            httpGet:
+              path: /localhost/healthz
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
           readinessProbe:
             httpGet:
               path: /localhost/healthz
@@ -41,13 +47,5 @@ spec:
           lifecycle:
             preStop:
               exec:
-                command: ["tini", "--", "kill httpserver"]
-          env:
-            - name: VERSION
-              value: "1.0"
-          volumeMounts:
-            - name: log-volume
-              mountPath: /var/log
-      volumes:
-        - name: log-volume
-          emptyDir: {}
+                command: ["sh", "-c", "kill httpserver_k8s"]
+      terminationGracePeriodSeconds: 30

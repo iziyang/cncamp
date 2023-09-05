@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"log"
 	"net/http"
 	"os"
 	"os/signal"
@@ -20,18 +19,18 @@ func main() {
 	r := mux.NewRouter()
 
 	// 创建日志文件
-	logFile, err := os.OpenFile("access.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer logFile.Close()
+	//logFile, err := os.OpenFile("access.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+	//defer logFile.Close()
 
 	// 设置日志输出到文件
-	logger.SetOutput(logFile)
+	logger.SetOutput(os.Stdout)
 
 	// 设置日志级别
 	logLevel := os.Getenv("LOG_LEVEL")
-	fmt.Printf("loglevel is:", logLevel)
+	logger.Debug("loglevel is:", logLevel)
 	if logLevel == "DEBUG" {
 		logger.SetLevel(logrus.DebugLevel)
 	} else {

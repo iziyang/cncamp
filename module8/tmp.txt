@@ -1,0 +1,18 @@
+[howardyuan@node1 ~/101/module8/service]$ kubectl get pods
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-8454df8dd8-8b475   1/1     Running   0          25s
+nginx-deployment-8454df8dd8-pnhk6   1/1     Running   0          45s
+nginx-deployment-8454df8dd8-v2fhm   1/1     Running   0          35s
+
+nginx-basic   NodePort    10.111.85.180   <none>        80:30283/TCP   168m    app=nginx
+
+-A KUBE-SERVICES -d 10.111.85.180/32 -p tcp -m comment --comment "default/nginx-basic:http cluster IP" -m tcp --dport 80 -j KUBE-SVC-WWRFY3PZ7W3FGMQW
+
+-A KUBE-SVC-WWRFY3PZ7W3FGMQW ! -s 192.168.0.0/16 -d 10.111.85.180/32 -p tcp -m comment --comment "default/nginx-basic:http cluster IP" -m tcp --dport 80 -j KUBE-MARK-MASQ
+-A KUBE-SVC-WWRFY3PZ7W3FGMQW -p tcp -m comment --comment "default/nginx-basic:http" -m tcp --dport 30283 -j KUBE-MARK-MASQ
+-A KUBE-SVC-WWRFY3PZ7W3FGMQW -m comment --comment "default/nginx-basic:http" -m statistic --mode random --probability 0.33333333349 -j KUBE-SEP-ZKE54MQX7QPERJAW
+-A KUBE-SVC-WWRFY3PZ7W3FGMQW -m comment --comment "default/nginx-basic:http" -m statistic --mode random --probability 0.50000000000 -j KUBE-SEP-CGQT7ORTWAWE2S3M
+-A KUBE-SVC-WWRFY3PZ7W3FGMQW -m comment --comment "default/nginx-basic:http" -j KUBE-SEP-YA5QKZMC4IEFY55W
+
+k edit svc nginx-basic
+nginx-basic   ClusterIP   10.111.85.180   <none>        80/TCP    170m    app=nginx

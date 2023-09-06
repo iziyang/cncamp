@@ -22,6 +22,10 @@ kind: Ingress
 metadata:
   name: httpserver-ingress
 spec:
+  tls:
+    - hosts:
+        - httpserver.k8s.com
+      secretName: httpserver-tls
   rules:
     - host: httpserver.k8s.com
       http:

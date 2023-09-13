@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../Desktop/howardyuan/code_study/go_project/cncamp/101/.idea/101.iml" filepath="$PROJECT_DIR$/../Desktop/howardyuan/code_study/go_project/cncamp/101/.idea/101.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/cncamp.iml" filepath="$PROJECT_DIR$/.idea/cncamp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Downloads/grpc-go-1.58.0/.idea/grpc-go-1.58.0.iml" filepath="$PROJECT_DIR$/../Downloads/grpc-go-1.58.0/.idea/grpc-go-1.58.0.iml" />
     </modules>
   </component>
 </project>

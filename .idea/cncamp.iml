@@ -5,5 +5,7 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="101" />
+    <orderEntry type="module" module-name="grpc-go-1.58.0" />
   </component>
 </module>

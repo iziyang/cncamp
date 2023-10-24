@@ -13,7 +13,7 @@ spec:
       - uri:
           exact: /hello/service0
     rewrite:
-        uri: "/service0"
+        uri: "/"
     route:
       - destination:
           host: service0

@@ -1,4 +1,10 @@
 # 修改代码并构建镜像
+修改后的代码，已经支持了 tracing
+
+```go
+req, err := http.NewRequest("GET", "http://service1", nil)
+req, err := http.NewRequest("GET", "http://service2", nil)
+```
 
 ```shell
 go mod init github.com/iziyang/cncamp/module12/service0
@@ -42,6 +48,7 @@ kubectl create -n istio-system secret tls cncamp-credential --key=cncamp.io.key 
 
 ## 修改后的 istio yaml 文件
 
+### 将访问到 /hello/service0 转到 / 路径下
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -58,7 +65,7 @@ spec:
       - uri:
           exact: /hello/service0
     rewrite:
-        uri: "/service0"
+        uri: "/"
     route:
       - destination:
           host: service0
@@ -82,11 +89,5 @@ istio-ingressgateway   LoadBalancer   $INGRESS_IP
 ### Access the tracing via ingress for 100 times(sampling rate is 1%)
 
 ```sh
-curl $INGRESS_IP/service0
-```
-
-### Check tracing dashboard
-
-```sh
-istioctl dashboard jaeger
+curl --resolve httpsserver.cncamp.io:443:10.103.249.202 https://httpsserver.cncamp.io/service0 -v -k
 ```

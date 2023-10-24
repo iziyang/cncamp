@@ -9,8 +9,11 @@ go mod init github.com/iziyang/cncamp/module12/service2
 go mod tidy
 git add . && git commit -m "go mod"
 docker build -t isziyang/service0:v1.0 -f Dokerfile .
+docker push isziyang/service0:v1.0
 docker build -t isziyang/service1:v1.0 -f Dokerfile .
+docker push isziyang/service1:v1.0
 docker build -t isziyang/service2:v1.0 -f Dokerfile .
+docker push isziyang/service2:v1.0
 ```
 ## 安装 jaeger
 

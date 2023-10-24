@@ -15,7 +15,7 @@ spec:
       containers:
         - name: service0
           imagePullPolicy: Always
-          image: isziyang/service0:v1.0
+          image: isziyang/service0:v2.0
           ports:
             - containerPort: 80
 ---

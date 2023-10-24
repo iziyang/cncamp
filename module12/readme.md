@@ -63,6 +63,9 @@ spec:
             number: 80
 ```
 
+```shell
+kubectl apply -f istio-specs.yaml -n module12
+```
 修改之后，已经支持了安全保证和七层路由以及 traceing 功能。
 
 ## 实际访问

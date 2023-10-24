@@ -86,8 +86,64 @@ k get svc -nistio-system
 istio-ingressgateway   LoadBalancer   $INGRESS_IP
 ```
 
-### Access the tracing via ingress for 100 times(sampling rate is 1%)
-
 ```sh
-curl --resolve httpsserver.cncamp.io:443:10.103.249.202 https://httpsserver.cncamp.io/service0 -v -k
+howardyuan@node1:module12$ curl --resolve httpsserver.cncamp.io:443:10.103.249.202 https://httpsserver.cncamp.io/hello/service0 -v -k
+* Added httpsserver.cncamp.io:443:10.103.249.202 to DNS cache
+* About to connect() to httpsserver.cncamp.io port 443 (#0)
+*   Trying 10.103.249.202...
+* Connected to httpsserver.cncamp.io (10.103.249.202) port 443 (#0)
+* Initializing NSS with certpath: sql:/etc/pki/nssdb
+* skipping SSL peer certificate verification
+* SSL connection using TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+* Server certificate:
+*       subject: CN=*.cncamp.io,O=cncamp Inc.
+*       start date: Oct 24 00:19:06 2023 GMT
+*       expire date: Oct 23 00:19:06 2024 GMT
+*       common name: *.cncamp.io
+*       issuer: CN=*.cncamp.io,O=cncamp Inc.
+> GET /hello/service0 HTTP/1.1
+> User-Agent: curl/7.29.0
+> Host: httpsserver.cncamp.io
+> Accept: */*
+> 
+< HTTP/1.1 200 OK
+< date: Tue, 24 Oct 2023 23:39:26 GMT
+< content-type: text/plain; charset=utf-8
+< x-envoy-upstream-service-time: 98
+< server: istio-envoy
+< transfer-encoding: chunked
+< 
+===================Details of the http request header:============
+HTTP/1.1 200 OK
+Content-Length: 915
+Content-Type: text/plain; charset=utf-8
+Date: Tue, 24 Oct 2023 23:39:26 GMT
+Server: envoy
+X-Envoy-Upstream-Service-Time: 45
+
+===================Details of the http request header:============
+HTTP/1.1 200 OK
+Content-Length: 13
+Accept: */*
+Accept-Encoding: gzip,gzip
+Content-Type: text/plain; charset=utf-8
+Date: Tue, 24 Oct 2023 23:39:26 GMT
+Server: envoy
+User-Agent: Go-http-client/1.1,Go-http-client/1.1,curl/7.29.0
+Version: 
+X-B3-Parentspanid: 1ee43f7bf9ed5dcf
+X-B3-Sampled: 1
+X-B3-Spanid: d0c0b9d482cffb4e
+X-B3-Traceid: 70c23cfc738b52bc8cb31591affd9f5e
+X-Envoy-Attempt-Count: 1
+X-Envoy-External-Address: 9.135.14.174
+X-Envoy-Original-Path: /hello/service0
+X-Envoy-Upstream-Service-Time: 1
+X-Forwarded-Client-Cert: By=spiffe://cluster.local/ns/module12/sa/default;Hash=ca42ff7b95910e94cc0313d485e6689821b4e14e80e10aa36741fc3933e328eb;Subject="";URI=spiffe://cluster.local/ns/module12/sa/default
+X-Forwarded-For: 9.135.14.174
+X-Forwarded-Proto: https
+X-Request-Id: 6f8ed0c3-5001-9bfe-a37f-beaebf955d8e
+
+* Connection #0 to host httpsserver.cncamp.io left intact
+Hello, World!
 ```
